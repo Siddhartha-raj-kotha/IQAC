@@ -1,19 +1,23 @@
 "use client";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { AppShell } from "@/components/AppShell";
 import { useLang } from "@/context/LanguageContext";
 import { t } from "@/lib/translations";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Toast } from "@/components/Toast";
+import { ChangePasswordModal } from "@/components/ChangePasswordModal";
 import { getSubmissionByFacultyId, canFacultyEdit } from "@/lib/mockData";
 import Link from "next/link";
-import { FileText, Clock, CheckCircle, ArrowRight, Bell, BookOpen, Award } from "lucide-react";
+import { FileText, Clock, CheckCircle, ArrowRight, Bell, BookOpen, KeyRound, ShieldCheck } from "lucide-react";
 
 export default function FacultyDashboard() {
   const { user, isLoading } = useAuth();
   const { lang } = useLang();
   const router = useRouter();
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
   useEffect(() => {
     if (!isLoading && (!user || user.role !== "faculty")) router.replace("/login");
@@ -72,6 +76,13 @@ export default function FacultyDashboard() {
                   ? "AQAR 2024-25 | Period: June 1, 2024 – May 31, 2025"
                   : "AQAR 2024-25 | కాలం: జూన్ 1, 2024 – మే 31, 2025"}
               </p>
+              <button
+                onClick={() => setShowPasswordModal(true)}
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-3.5 py-1.5 rounded-xl text-xs inline-flex items-center gap-1.5 transition-all mt-3 shadow-xs"
+              >
+                <KeyRound size={13} className="text-yellow-400" />
+                {lang === "en" ? "Change Password" : "పాస్‌వర్డ్ మార్చండి"}
+              </button>
             </div>
             <div className="bg-white/10 rounded-xl p-4 text-center min-w-[120px]">
               <p className="text-3xl font-black text-yellow-400">
@@ -215,6 +226,32 @@ export default function FacultyDashboard() {
             </ul>
           </div>
         </div>
+        {/* Account Security Card */}
+        <div className="card p-5 flex flex-wrap items-center justify-between gap-4 bg-gradient-to-r from-gray-50 to-blue-50/40 border border-gray-200">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-ku-navy text-yellow-400 flex items-center justify-center flex-shrink-0">
+              <ShieldCheck size={20} />
+            </div>
+            <div>
+              <p className="font-bold text-ku-navy text-sm">{lang === "en" ? "Account Security" : "ఖాతా భద్రత"}</p>
+              <p className="text-gray-500 text-xs">{lang === "en" ? "Change and update your account login password" : "మీ ఖాతా లాగిన్ పాస్‌వర్డ్‌ను మార్చండి మరియు నవీకరించండి"}</p>
+            </div>
+          </div>
+          <button
+            onClick={() => setShowPasswordModal(true)}
+            className="btn btn-outline flex items-center gap-2 text-sm"
+          >
+            <KeyRound size={15} />
+            {lang === "en" ? "Change Password" : "పాస్‌వర్డ్ మార్చండి"}
+          </button>
+        </div>
+
+        <ChangePasswordModal
+          isOpen={showPasswordModal}
+          onClose={() => setShowPasswordModal(false)}
+          onSuccess={(msg) => setToast({ msg, type: "success" })}
+        />
+        {toast && <Toast message={toast.msg} type={toast.type} onDismiss={() => setToast(null)} />}
       </div>
     </AppShell>
   );

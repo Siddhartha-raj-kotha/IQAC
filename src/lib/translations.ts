@@ -55,6 +55,16 @@ export const translations: Record<string, Record<Lang, string>> = {
   loginError: { en: "Invalid username or password.", te: "తప్పు వినియోగదారు పేరు లేదా పాస్వర్డ్." },
   selectRole: { en: "Select your role to login", te: "లాగిన్ చేయడానికి మీ పాత్రను ఎంచుకోండి" },
   rolePrompt: { en: "I am a", te: "నేను ఒక" },
+  changePassword: { en: "Change Password", te: "పాస్‌వర్డ్ మార్చండి" },
+  currentPassword: { en: "Current Password", te: "ప్రస్తుత పాస్‌వర్డ్" },
+  newPassword: { en: "New Password", te: "కొత్త పాస్‌వర్డ్" },
+  confirmNewPassword: { en: "Confirm New Password", te: "కొత్త పాస్‌వర్డ్ నిర్ధారించండి" },
+  passwordChangedSuccess: { en: "Password changed successfully!", te: "పాస్‌వర్డ్ విజయవంతంగా మార్చబడింది!" },
+  incorrectCurrentPassword: { en: "Current password is incorrect.", te: "ప్రస్తుత పాస్‌వర్డ్ సరైనది కాదు." },
+  passwordsDoNotMatch: { en: "New passwords do not match.", te: "కొత్త పాస్‌వర్డ్‌లు సరిపోలడం లేదు." },
+  passwordMinLength: { en: "New password must be at least 6 characters.", te: "కొత్త పాస్‌వర్డ్ కనీసం 6 అక్షరాలు ఉండాలి." },
+  passwordSameAsCurrent: { en: "New password must be different from current password.", te: "కొత్త పాస్‌వర్డ్ ప్రస్తుత పాస్‌వర్డ్ కంటే భిన్నంగా ఉండాలి." },
+  updatePassword: { en: "Update Password", te: "పాస్‌వర్డ్ నవీకరించు" },
 
   // ── Roles ────────────────────────────────────────────────────────────────
   roleFaculty: { en: "Faculty", te: "అధ్యాపకుడు" },

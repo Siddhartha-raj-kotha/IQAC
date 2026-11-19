@@ -5,10 +5,12 @@ import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { t } from "@/lib/translations";
-import { LogOut, LayoutDashboard, FileText, Users, Settings, ChevronRight, Menu, X } from "lucide-react";
+import { LogOut, LayoutDashboard, FileText, Users, Settings, ChevronRight, Menu, X, KeyRound } from "lucide-react";
 import { useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { Role } from "@/lib/mockData";
+import { ChangePasswordModal } from "@/components/ChangePasswordModal";
+import { Toast } from "@/components/Toast";
 
 interface NavItem {
   href: string;
@@ -33,6 +35,8 @@ export function AppShell({ children }: { children: ReactNode }) {
   const { lang } = useLang();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
   if (!user) return <>{children}</>;
 
@@ -69,6 +73,13 @@ export function AppShell({ children }: { children: ReactNode }) {
             )}
           </div>
         </div>
+        <button
+          onClick={() => { setSidebarOpen(false); setShowPasswordModal(true); }}
+          className="mt-3 w-full py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/80 hover:text-white text-xs flex items-center justify-center gap-1.5 transition-all border border-white/10"
+        >
+          <KeyRound size={13} className="text-yellow-400" />
+          {t("changePassword", lang)}
+        </button>
       </div>
 
       {/* Nav items */}
@@ -138,6 +149,14 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowPasswordModal(true)}
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs text-ku-navy hover:text-ku-blue hover:bg-blue-50/70 rounded-lg transition-all border border-ku-border font-medium"
+              title={t("changePassword", lang)}
+            >
+              <KeyRound size={13} className="text-yellow-600" />
+              <span>{t("changePassword", lang)}</span>
+            </button>
             <LanguageToggle />
             <button
               onClick={logout}
@@ -158,6 +177,13 @@ export function AppShell({ children }: { children: ReactNode }) {
         <footer className="ku-nav text-white/50 text-xs text-center py-3 px-4 no-print">
           © 2025 Kakatiya University, Warangal — IQAC Academic Data Collection System | AQAR 2024-25
         </footer>
+
+        <ChangePasswordModal
+          isOpen={showPasswordModal}
+          onClose={() => setShowPasswordModal(false)}
+          onSuccess={(msg) => setToast({ msg, type: "success" })}
+        />
+        {toast && <Toast message={toast.msg} type={toast.type} onDismiss={() => setToast(null)} />}
       </div>
     </div>
   );

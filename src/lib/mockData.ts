@@ -395,6 +395,37 @@ export function getUserByCredentials(email: string, password: string): User | nu
   return getAllUsers().find(u => u.email === email && u.password === password) ?? null;
 }
 
+export interface PasswordChangeResult {
+  success: boolean;
+  error?: string;
+}
+
+export function changeUserPassword(userId: string, currentPass: string, newPass: string): PasswordChangeResult {
+  const users = getAllUsers();
+  const idx = users.findIndex(u => u.id === userId);
+  if (idx === -1) {
+    return { success: false, error: "User not found." };
+  }
+
+  const user = users[idx];
+  if (user.password !== currentPass) {
+    return { success: false, error: "Current password is incorrect." };
+  }
+
+  if (!newPass || newPass.trim().length < 6) {
+    return { success: false, error: "New password must be at least 6 characters." };
+  }
+
+  if (newPass === currentPass) {
+    return { success: false, error: "New password must be different from current password." };
+  }
+
+  const updatedUsers = [...users];
+  updatedUsers[idx] = { ...user, password: newPass };
+  saveUsers(updatedUsers);
+  return { success: true };
+}
+
 export function getSubmissionByFacultyId(facultyId: string): Submission | undefined {
   const subs = getAllSubmissions();
   return subs.find(s => s.facultyId === facultyId);

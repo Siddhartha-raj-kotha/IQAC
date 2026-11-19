@@ -8,6 +8,8 @@ import {
   updateSubmission,
   getSubmissionByFacultyId,
   deleteSubmissionByFacultyId,
+  changeUserPassword,
+  getUserByCredentials,
 } from "../src/lib/mockData.ts";
 
 import {
@@ -272,4 +274,64 @@ test("Out Range Activity Section: Column definitions and step ordering before ot
 
   assert.ok(outRangeIndex < otherIndex, "Out Range Activity must precede Other Information / Activity");
   assert.ok(otherIndex < reviewIndex, "Other Information must precede Final Review");
+});
+
+test("Authenticated Password Change: Validation, incorrect current password rejection, and successful update across roles", () => {
+  // Test Faculty (f1)
+  const faculty = getUserByCredentials("ramesh@ku.ac.in", "faculty123");
+  assert.ok(faculty, "Faculty user f1 should exist");
+
+  // 1. Incorrect current password rejected
+  const badAuth = changeUserPassword(faculty.id, "wrongpassword", "newsecret123");
+  assert.equal(badAuth.success, false);
+  assert.equal(badAuth.error, "Current password is incorrect.");
+
+  // 2. Too short password rejected (<6 chars)
+  const shortPass = changeUserPassword(faculty.id, "faculty123", "123");
+  assert.equal(shortPass.success, false);
+  assert.equal(shortPass.error, "New password must be at least 6 characters.");
+
+  // 3. Same as current password rejected
+  const samePass = changeUserPassword(faculty.id, "faculty123", "faculty123");
+  assert.equal(samePass.success, false);
+  assert.equal(samePass.error, "New password must be different from current password.");
+
+  // 4. Successful authenticated password change
+  const successChange = changeUserPassword(faculty.id, "faculty123", "ramesh2025!");
+  assert.equal(successChange.success, true);
+
+  // 5. Verify new password authenticates and old password fails
+  const reAuthNew = getUserByCredentials("ramesh@ku.ac.in", "ramesh2025!");
+  assert.ok(reAuthNew, "User should authenticate with new password");
+  assert.equal(reAuthNew.password, "ramesh2025!");
+
+  const reAuthOld = getUserByCredentials("ramesh@ku.ac.in", "faculty123");
+  assert.equal(reAuthOld, null, "Old password must no longer authenticate");
+
+  // Reset password back for other tests
+  changeUserPassword(faculty.id, "ramesh2025!", "faculty123");
+
+  // Test HOD (h1)
+  const hod = getUserByCredentials("hod.math@ku.ac.in", "hod123");
+  assert.ok(hod);
+  const hodChange = changeUserPassword(hod.id, "hod123", "hodSecure999");
+  assert.equal(hodChange.success, true);
+  assert.ok(getUserByCredentials("hod.math@ku.ac.in", "hodSecure999"));
+  changeUserPassword(hod.id, "hodSecure999", "hod123");
+
+  // Test Principal (p1)
+  const principal = getUserByCredentials("principal@ku.ac.in", "principal123");
+  assert.ok(principal);
+  const princChange = changeUserPassword(principal.id, "principal123", "principalNewPass");
+  assert.equal(princChange.success, true);
+  assert.ok(getUserByCredentials("principal@ku.ac.in", "principalNewPass"));
+  changeUserPassword(principal.id, "principalNewPass", "principal123");
+
+  // Test Admin (a1)
+  const admin = getUserByCredentials("iqac@ku.ac.in", "admin123");
+  assert.ok(admin);
+  const adminChange = changeUserPassword(admin.id, "admin123", "adminSecure456");
+  assert.equal(adminChange.success, true);
+  assert.ok(getUserByCredentials("iqac@ku.ac.in", "adminSecure456"));
+  changeUserPassword(admin.id, "adminSecure456", "admin123");
 });

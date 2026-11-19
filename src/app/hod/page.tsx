@@ -6,10 +6,11 @@ import { useLang } from "@/context/LanguageContext";
 import { AppShell } from "@/components/AppShell";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Toast } from "@/components/Toast";
+import { ChangePasswordModal } from "@/components/ChangePasswordModal";
 import { t } from "@/lib/translations";
 import { getSubmissionsByDept, updateSubmission, Submission, SubmissionStatus } from "@/lib/mockData";
 import Link from "next/link";
-import { Eye, CheckCircle, XCircle, ChevronRight, Search, Filter } from "lucide-react";
+import { Eye, CheckCircle, XCircle, ChevronRight, Search, Filter, KeyRound } from "lucide-react";
 
 export default function HODDashboard() {
   const { user, isLoading } = useAuth();
@@ -25,6 +26,7 @@ export default function HODDashboard() {
   const [remarks, setRemarks] = useState("");
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
   const [action, setAction] = useState<"forward" | "return" | null>(null);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   useEffect(() => {
     if (!isLoading && (!user || user.role !== "hod")) router.replace("/login");
@@ -88,10 +90,19 @@ useEffect(() => {
     <AppShell>
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
-        <div className="ku-header rounded-2xl p-6 text-white">
-          <h1 className="text-2xl font-bold">{e ? "HOD Dashboard" : "HOD డాష్బోర్డ్"}</h1>
-          <p className="text-white/70 text-sm mt-1">{user.name} — {user.department}</p>
-          <p className="text-yellow-300 text-sm">{e ? "Monitor departmental faculty submissions (Submissions go directly to IQAC)." : "విభాగ అధ్యాపక సమర్పణలను గమనించండి (సమర్పణలు నేరుగా IQAC కి వెళ్తాయి)."}</p>
+        <div className="ku-header rounded-2xl p-6 text-white flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold">{e ? "HOD Dashboard" : "HOD డాష్బోర్డ్"}</h1>
+            <p className="text-white/70 text-sm mt-1">{user.name} — {user.department}</p>
+            <p className="text-yellow-300 text-sm">{e ? "Monitor departmental faculty submissions (Submissions go directly to IQAC)." : "విభాగ అధ్యాపక సమర్పణలను గమనించండి (సమర్పణలు నేరుగా IQAC కి వెళ్తాయి)."}</p>
+          </div>
+          <button
+            onClick={() => setShowPasswordModal(true)}
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-4 py-2 rounded-xl text-sm flex items-center gap-2 transition-all shadow-xs"
+          >
+            <KeyRound size={16} className="text-yellow-400" />
+            {e ? "Change Password" : "పాస్‌వర్డ్ మార్చండి"}
+          </button>
         </div>
 
         {/* Stats */}
@@ -313,6 +324,11 @@ useEffect(() => {
         </div>
       )}
 
+      <ChangePasswordModal
+        isOpen={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
+        onSuccess={(msg) => setToast({ msg, type: "success" })}
+      />
       {toast && <Toast message={toast.msg} type={toast.type} onDismiss={() => setToast(null)} />}
     </AppShell>
   );

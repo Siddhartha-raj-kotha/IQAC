@@ -8,7 +8,8 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { Toast } from "@/components/Toast";
 import { t } from "@/lib/translations";
 import { getAllSubmissions, updateSubmission, Submission, mockUsers } from "@/lib/mockData";
-import { Eye, CheckCircle, XCircle, Download, Search, BarChart3, FileSpreadsheet, FileText } from "lucide-react";
+import { Eye, CheckCircle, XCircle, Download, Search, BarChart3, FileSpreadsheet, FileText, KeyRound } from "lucide-react";
+import { ChangePasswordModal } from "@/components/ChangePasswordModal";
 import {
   exportFacultyToExcel,
   exportAllFacultyToExcel,
@@ -32,6 +33,7 @@ export default function AdminDashboard() {
   const [selected, setSelected] = useState<Submission | null>(null);
   const [remarks, setRemarks] = useState("");
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   useEffect(() => {
     if (!isLoading && (!user || user.role !== "admin")) router.replace("/login");
@@ -198,6 +200,13 @@ setToast({ msg: e ? "Please enter remarks before returning." : "తిరిగ�
               title={e ? "Download summary CSV of all faculty submissions" : "అన్ని అధ్యాపక సమర్పణల సారాంశం CSV ని డౌన్‌లోడ్ చేయండి"}
             >
               <Download size={16} /> {e ? "Summary (CSV)" : "సారాంశం (CSV)"}
+            </button>
+            <button
+              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-3 py-2 rounded-xl flex items-center gap-2 text-sm transition-all"
+              onClick={() => setShowPasswordModal(true)}
+              title={e ? "Change account password" : "ఖాతా పాస్‌వర్డ్ మార్చండి"}
+            >
+              <KeyRound size={16} className="text-yellow-400" /> {e ? "Change Password" : "పాస్‌వర్డ్ మార్చండి"}
             </button>
           </div>
         </div>
@@ -544,6 +553,11 @@ setToast({ msg: e ? "Please enter remarks before returning." : "తిరిగ�
         </div>
       )}
 
+      <ChangePasswordModal
+        isOpen={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
+        onSuccess={(msg) => setToast({ msg, type: "success" })}
+      />
       {toast && <Toast message={toast.msg} type={toast.type} onDismiss={() => setToast(null)} />}
     </AppShell>
   );

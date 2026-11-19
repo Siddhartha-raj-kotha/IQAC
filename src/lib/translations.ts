@@ -1,0 +1,280 @@
+// Full English + Telugu translation map for IQAC Portal
+export type Lang = "en" | "te";
+
+export const translations: Record<string, Record<Lang, string>> = {
+  // ── App General ──────────────────────────────────────────────────────────
+  appName: { en: "IQAC Faculty Data Portal", te: "IQAC అధ్యాపక డేటా పోర్టల్" },
+  university: { en: "Kakatiya University, Warangal", te: "కాకతీయ విశ్వవిద్యాలయం, వరంగల్" },
+  tagline: { en: "Academic Data Collection System — AQAR 2024-25", te: "విద్యా డేటా సేకరణ వ్యవస్థ — AQAR 2024-25" },
+  loading: { en: "Loading...", te: "లోడ్ అవుతోంది..." },
+  save: { en: "Save", te: "సేవ్ చేయి" },
+  cancel: { en: "Cancel", te: "రద్దు చేయి" },
+  delete: { en: "Delete", te: "తొలగించు" },
+  edit: { en: "Edit", te: "సవరించు" },
+  view: { en: "View", te: "చూడు" },
+  close: { en: "Close", te: "మూసివేయి" },
+  confirm: { en: "Confirm", te: "నిర్ధారించు" },
+  yes: { en: "Yes", te: "అవును" },
+  no: { en: "No", te: "లేదు" },
+  search: { en: "Search", te: "శోధించు" },
+  filter: { en: "Filter", te: "వడగట్టు" },
+  export: { en: "Export", te: "ఎగుమతి" },
+  print: { en: "Print", te: "ముద్రించు" },
+  download: { en: "Download Excel", te: "Excel డౌన్లోడ్" },
+  downloadPDF: { en: "Download PDF", te: "PDF డౌన్లోడ్" },
+  downloadExcel: { en: "Download Excel (.xlsx)", te: "Excel డౌన్లోడ్ (.xlsx)" },
+  allFormsExcel: { en: "All Forms (Excel)", te: "అన్ని ఫారాలు (Excel)" },
+  allFormsPdf: { en: "All Forms (PDF)", te: "అన్ని ఫారాలు (PDF)" },
+  summaryCsv: { en: "Summary (CSV)", te: "సారాంశం (CSV)" },
+  logout: { en: "Logout", te: "లాగ్అవుట్" },
+  settings: { en: "Settings", te: "సెట్టింగులు" },
+  back: { en: "Back", te: "వెనక్కి" },
+  required: { en: "Required", te: "తప్పనిసరి" },
+  optional: { en: "Optional", te: "ఐచ్ఛికం" },
+  noData: { en: "No data found", te: "డేటా లేదు" },
+  actions: { en: "Actions", te: "చర్యలు" },
+  remarks: { en: "Remarks / Comments", te: "వ్యాఖ్యలు / వివరణ" },
+  submitBtn: { en: "Submit", te: "సమర్పించు" },
+  addRow: { en: "+ Add Row", te: "+ వరుస జోడించు" },
+  removeRow: { en: "Remove", te: "తొలగించు" },
+  uploadFile: { en: "Upload Evidence", te: "సాక్ష్యం అప్లోడ్ చేయి" },
+  fileUploaded: { en: "File uploaded", te: "ఫైల్ అప్లోడ్ అయింది" },
+  dragDrop: { en: "Drag & drop or click to browse", te: "డ్రాగ్ & డ్రాప్ చేయండి లేదా బ్రౌజ్ చేయండి" },
+  maxFileSize: { en: "Max file size: 10 MB (PDF, JPG, PNG)", te: "గరిష్ట ఫైల్ పరిమాణం: 10 MB (PDF, JPG, PNG)" },
+  selectFile: { en: "Select File", te: "ఫైల్ ఎంచుకోండి" },
+  noFileChosen: { en: "No file chosen", te: "ఫైల్ ఎంచుకోలేదు" },
+
+  // ── Auth ─────────────────────────────────────────────────────────────────
+  loginTitle: { en: "Sign In to Your Account", te: "మీ ఖాతాలోకి లాగిన్ చేయండి" },
+  loginSubtitle: { en: "Use your university-provided credentials", te: "విశ్వవిద్యాలయం అందించిన ఆధారాలను ఉపయోగించండి" },
+  username: { en: "Username / Email", te: "వినియోగదారు పేరు / ఇమెయిల్" },
+  password: { en: "Password", te: "పాస్వర్డ్" },
+  loginBtn: { en: "Login", te: "లాగిన్" },
+  loggingIn: { en: "Logging in...", te: "లాగిన్ అవుతోంది..." },
+  forgotPassword: { en: "Forgot password? Contact IQAC Admin", te: "పాస్వర్డ్ మర్చిపోయారా? IQAC Admin ని సంప్రదించండి" },
+  loginError: { en: "Invalid username or password.", te: "తప్పు వినియోగదారు పేరు లేదా పాస్వర్డ్." },
+  selectRole: { en: "Select your role to login", te: "లాగిన్ చేయడానికి మీ పాత్రను ఎంచుకోండి" },
+  rolePrompt: { en: "I am a", te: "నేను ఒక" },
+
+  // ── Roles ────────────────────────────────────────────────────────────────
+  roleFaculty: { en: "Faculty", te: "అధ్యాపకుడు" },
+  roleHOD: { en: "Head of Department", te: "విభాగ అధిపతి" },
+  rolePrincipal: { en: "Principal", te: "ప్రిన్సిపాల్" },
+  roleAdmin: { en: "IQAC Admin", te: "IQAC అడ్మిన్" },
+
+  // ── Status Labels ─────────────────────────────────────────────────────────
+  statusDraft: { en: "Draft", te: "ముసాయిదా" },
+  statusSubmitted: { en: "Submitted by Faculty", te: "అధ్యాపకుడు సమర్పించారు" },
+  statusReturnedHOD: { en: "Returned by HOD", te: "HOD తిరిగి పంపారు" },
+  statusApprovedHOD: { en: "Approved by HOD", te: "HOD ఆమోదించారు" },
+  statusReturnedPrincipal: { en: "Returned by Principal", te: "ప్రిన్సిపాల్ తిరిగి పంపారు" },
+  statusApprovedPrincipal: { en: "Approved by Principal", te: "ప్రిన్సిపాల్ ఆమోదించారు" },
+  statusReturnedIQAC: { en: "Returned by IQAC", te: "IQAC తిరిగి పంపారు" },
+  statusAcceptedIQAC: { en: "Accepted by IQAC", te: "IQAC అంగీకరించారు" },
+
+  // ── Dashboard ─────────────────────────────────────────────────────────────
+  dashboard: { en: "Dashboard", te: "డాష్బోర్డ్" },
+  welcome: { en: "Welcome", te: "స్వాగతం" },
+  myForm: { en: "My Form", te: "నా ఫారం" },
+  mySubmissions: { en: "My Submissions", te: "నా సమర్పణలు" },
+  formStatus: { en: "Form Status", te: "ఫారం స్థితి" },
+  submissionDate: { en: "Submission Date", te: "సమర్పణ తేదీ" },
+  lastUpdated: { en: "Last Updated", te: "చివరిగా నవీకరించబడింది" },
+  totalSubmissions: { en: "Total Submissions", te: "మొత్తం సమర్పణలు" },
+  pending: { en: "Pending", te: "పెండింగ్" },
+  approved: { en: "Approved", te: "ఆమోదించబడింది" },
+  returned: { en: "Returned", te: "తిరిగి పంపబడింది" },
+  department: { en: "Department", te: "విభాగం" },
+  allDepartments: { en: "All Departments", te: "అన్ని విభాగాలు" },
+  allStatus: { en: "All Status", te: "అన్ని స్థితులు" },
+  facultyName: { en: "Faculty Name", te: "అధ్యాపకుడి పేరు" },
+  submissionStatus: { en: "Submission Status", te: "సమర్పణ స్థితి" },
+  viewDetails: { en: "View Details", te: "వివరాలు చూడండి" },
+  forwardToPrincipal: { en: "Forward to Principal", te: "ప్రిన్సిపాల్‌కు పంపు" },
+  forwardToIQAC: { en: "Forward to IQAC Admin", te: "IQAC Admin కు పంపు" },
+  returnToFaculty: { en: "Return to Faculty", te: "అధ్యాపకుడికి తిరిగి పంపు" },
+  returnToHOD: { en: "Return to HOD", te: "HOD కి తిరిగి పంపు" },
+  approveAccept: { en: "Accept & Finalize", te: "అంగీకరించు & ఖరారు చేయి" },
+  hodRemarks: { en: "HOD Remarks", te: "HOD వ్యాఖ్యలు" },
+  principalRemarks: { en: "Principal Remarks", te: "ప్రిన్సిపాల్ వ్యాఖ్యలు" },
+  iqacRemarks: { en: "IQAC Admin Remarks", te: "IQAC Admin వ్యాఖ్యలు" },
+  enterRemarks: { en: "Enter remarks before action...", te: "చర్యకు ముందు వ్యాఖ్యలు నమోదు చేయండి..." },
+
+  // ── Wizard Navigation ─────────────────────────────────────────────────────
+  stepOf: { en: "Step", te: "దశ" },
+  of: { en: "of", te: "లో" },
+  next: { en: "Next →", te: "తదుపరి →" },
+  previous: { en: "← Previous", te: "← వెనక్కి" },
+  saveDraft: { en: "Save Draft", te: "ముసాయిదా సేవ్ చేయి" },
+  draftSaved: { en: "Draft saved!", te: "ముసాయిదా సేవ్ అయింది!" },
+  submitForm: { en: "Submit to IQAC", te: "IQAC సమీక్ష కోసం సమర్పించు" },
+  resubmitForm: { en: "Resubmit to IQAC", te: "IQAC కి మళ్ళీ సమర్పించు" },
+  finalReview: { en: "Final Review", te: "చివరి సమీక్ష" },
+  reviewBeforeSubmit: { en: "Please review all your entries before submitting.", te: "సమర్పించే ముందు మీ అన్ని ఎంట్రీలను సమీక్షించండి." },
+  confirmSubmit: { en: "Are you sure you want to submit? Editing will be locked until IQAC reviews or returns your form.", te: "మీరు సమర్పించాలని నిశ్చయించుకున్నారా? IQAC సమీక్షించి సవరణలకు తిరిగి పంపే వరకు సవరణలు లాక్ చేయబడతాయి." },
+  confirmResubmit: { en: "Are you sure you want to resubmit to IQAC?", te: "మీరు IQAC కి మళ్ళీ సమర్పించాలని నిశ్చయించుకున్నారా?" },
+
+  // ── Form Steps ────────────────────────────────────────────────────────────
+  step1: { en: "Basic Profile", te: "ప్రాథమిక వివరాలు" },
+  step2: { en: "Research Papers", te: "పరిశోధన పత్రాలు" },
+  step3: { en: "Books & Chapters", te: "పుస్తకాలు & అధ్యాయాలు" },
+  step4: { en: "FDP Attended", te: "FDP హాజరైన వివరాలు" },
+  step5: { en: "Patents", te: "పేటెంట్లు" },
+  step6: { en: "Seminars (Participated)", te: "సెమినార్లు (పాల్గొన్నవి)" },
+  step7: { en: "Seminars (Organized)", te: "సెమినార్లు (నిర్వహించినవి)" },
+  step8: { en: "Fellowships", te: "ఫెలోషిప్‌లు" },
+  step9: { en: "Funded Projects", te: "నిధుల ప్రాజెక్టులు" },
+  step10: { en: "Awards / Recognitions for Research or Innovation", te: "పరిశోధన లేదా ఆవిష్కరణకు అవార్డులు / గుర్తింపులు" },
+  step11: { en: "Awards / Recognition for Extension Activities", te: "విస్తరణ కార్యకలాపాలకు అవార్డులు / గుర్తింపు" },
+  step12: { en: "E-Content", te: "ఈ-కంటెంట్" },
+  step13: { en: "Out Range Activity", te: "అవుట్ రేంజ్ కార్యాచరణ" },
+  step14: { en: "Other Information", te: "ఇతర సమాచారం" },
+  step15: { en: "Final Review & Submit", te: "చివరి సమీక్ష & సమర్పణ" },
+  outRangeActivity: { en: "Out Range Activity", te: "అవుట్ రేంజ్ కార్యాచరణ" },
+
+  // ── Profile Fields ────────────────────────────────────────────────────────
+  teacherName: { en: "Name of Teacher", te: "అధ్యాపకుడి పేరు" },
+  designation: { en: "Designation", te: "హోదా" },
+  dept: { en: "Department", te: "విభాగం" },
+  dateOfAppointment: { en: "Date of Appointment", te: "నియామక తేదీ" },
+  appointmentOrderEvidence: { en: "Appointment Order Document", te: "నియామక ఉత్తర్వు పత్రం" },
+  experience: { en: "Years of Experience (in this institution)", te: "అనుభవం సంవత్సరాలు (ఈ సంస్థలో)" },
+  mobile: { en: "Mobile Number", te: "మొబైల్ నంబర్" },
+  email: { en: "Email ID", te: "ఇమెయిల్ ID" },
+  pan: { en: "PAN Number", te: "PAN నంబర్" },
+  panEvidence: { en: "PAN Card Document", te: "PAN కార్డు పత్రం" },
+  aadhar: { en: "AADHAR Number", te: "ఆధార్ నంబర్" },
+  aadharEvidence: { en: "Aadhaar Card Document", te: "ఆధార్ కార్డు పత్రం" },
+  socialStatus: { en: "Social Status / Sub-caste", te: "సామాజిక స్థితి / ఉప-కులం" },
+  dob: { en: "Date of Birth", te: "పుట్టిన తేదీ" },
+  highestQual: { en: "Higher Qualification", te: "అత్యధిక అర్హత" },
+  highestQualEvidence: { en: "Highest Qualification Certificate", te: "అత్యధిక అర్హత సర్టిఫికేట్" },
+  phdDate: { en: "Date of Awarding PhD", te: "PhD అందుకున్న తేదీ" },
+  isResearchGuide: { en: "Recognized as Research Guide?", te: "పరిశోధన గైడ్‌గా గుర్తింపు పొందారా?" },
+  researchGuideDate: { en: "Date of Recognition as Research Guide", te: "పరిశోధన గైడ్‌గా గుర్తింపు తేదీ" },
+  researchGuideEvidence: { en: "Research Guide Certificate", te: "పరిశోధన గైడ్ సర్టిఫికేట్" },
+
+  // ── Research Papers ───────────────────────────────────────────────────────
+  paperTitle: { en: "Title of Paper", te: "పత్రం పేరు" },
+  journalName: { en: "Journal Name", te: "జర్నల్ పేరు" },
+  ugcNotified: { en: "UGC Listed Journal?", te: "UGC జాబితా జర్నల్?" },
+  issn: { en: "ISSN Number", te: "ISSN నంబర్" },
+  volume: { en: "Volume/Issue", te: "వాల్యూమ్/సమస్య" },
+  year: { en: "Year of Publication", te: "ప్రచురణ సంవత్సరం" },
+  authors: { en: "Author(s)", te: "రచయిత(లు)" },
+  doi: { en: "DOI / URL", te: "DOI / లింక్" },
+  impactFactor: { en: "Impact Factor", te: "ఇంపాక్ట్ ఫ్యాక్టర్" },
+
+  // ── Books ─────────────────────────────────────────────────────────────────
+  bookTitle: { en: "Title of Book / Chapter", te: "పుస్తకం / అధ్యాయం పేరు" },
+  publicationType: { en: "Type", te: "రకం" },
+  publisher: { en: "Publisher Name", te: "ప్రచురణకర్త పేరు" },
+  isbn: { en: "ISBN Number", te: "ISBN నంబర్" },
+  chapterTitle: { en: "Chapter Title (if applicable)", te: "అధ్యాయం పేరు (వర్తించినట్లయితే)" },
+
+  // ── FDP ──────────────────────────────────────────────────────────────────
+  fdpTitle: { en: "Programme Title", te: "కార్యక్రమం పేరు" },
+  organizer: { en: "Organizing Institution", te: "నిర్వహించిన సంస్థ" },
+  dateFrom: { en: "From Date", te: "నుండి తేదీ" },
+  dateTo: { en: "To Date", te: "వరకు తేదీ" },
+  durationDays: { en: "Duration (Days)", te: "వ్యవధి (రోజులు)" },
+  mode: { en: "Mode (Online/Offline)", te: "మోడ్ (ఆన్‌లైన్/ఆఫ్‌లైన్)" },
+  sponsoredBy: { en: "Sponsored By", te: "సహకారం" },
+
+  // ── Patents ───────────────────────────────────────────────────────────────
+  patentTitle: { en: "Title of Patent", te: "పేటెంట్ పేరు" },
+  patentNumber: { en: "Patent Number", te: "పేటెంట్ నంబర్" },
+  patentStatus: { en: "Status (Published/Awarded)", te: "స్థితి (ప్రచురించబడింది/అందుకున్నది)" },
+  patentUrl: { en: "Patent URL", te: "పేటెంట్ లింక్" },
+  patentYear: { en: "Year", te: "సంవత్సరం" },
+
+  // ── Seminars ─────────────────────────────────────────────────────────────
+  seminarTitle: { en: "Title of Seminar / Conference / Workshop", te: "సెమినార్ / సమావేశం / వర్క్‌షాప్ పేరు" },
+  level: { en: "Level (National/International)", te: "స్థాయి (జాతీయ/అంతర్జాతీయ)" },
+  role: { en: "Role (Participant/Speaker/Chair etc.)", te: "పాత్ర (పాల్గొన్నవారు/వక్త/చైర్ మొదలైనవి)" },
+
+  // ── Fellowship ────────────────────────────────────────────────────────────
+  fellowshipName: { en: "Fellowship / Award Name", te: "ఫెలోషిప్ / అవార్డ్ పేరు" },
+  fellowshipType: { en: "Type (National / International)", te: "రకం (జాతీయ / అంతర్జాతీయ)" },
+  awardingBody: { en: "Awarding Body / Agency", te: "అవార్డు ఇచ్చిన సంస్థ" },
+  amount: { en: "Amount (₹)", te: "మొత్తం (₹)" },
+
+  // ── Funded Projects ───────────────────────────────────────────────────────
+  projectTitle: { en: "Project Title", te: "ప్రాజెక్ట్ పేరు" },
+  fundingAgency: { en: "Funding Agency", te: "నిధుల సంస్థ" },
+  fundingType: { en: "Type (Govt / Non-Govt)", te: "రకం (ప్రభుత్వం / ప్రైవేట్)" },
+  amountSanctioned: { en: "Amount Sanctioned (₹)", te: "మంజూరైన మొత్తం (₹)" },
+  projectDuration: { en: "Duration (Years)", te: "వ్యవధి (సంవత్సరాలు)" },
+  projectStatus: { en: "Status (Ongoing/Completed)", te: "స్థితి (కొనసాగుతోంది/పూర్తయింది)" },
+
+  // ── Awards ────────────────────────────────────────────────────────────────
+  awardName: { en: "Award / Recognition Name", te: "అవార్డ్ / గుర్తింపు పేరు" },
+  awardYear: { en: "Year of Award", te: "అవార్డ్ సంవత్సరం" },
+
+  // ── E-Content ─────────────────────────────────────────────────────────────
+  contentTitle: { en: "Title of E-Content", te: "ఈ-కంటెంట్ పేరు" },
+  platform: { en: "Platform / LMS", te: "ప్లాట్‌ఫామ్ / LMS" },
+  contentUrl: { en: "URL / Link", te: "లింక్" },
+
+  // ── Other ─────────────────────────────────────────────────────────────────
+  description: { en: "Description / Details", te: "వివరణ / వివరాలు" },
+
+  // ── Admin ─────────────────────────────────────────────────────────────────
+  userManagement: { en: "User Management", te: "వినియోగదారు నిర్వహణ" },
+  addUser: { en: "Add User", te: "వినియోగదారుని జోడించు" },
+  userRole: { en: "Role", te: "పాత్ర" },
+  assignDept: { en: "Assign Department", te: "విభాగం కేటాయించు" },
+  formPeriod: { en: "Form Open Period", te: "ఫారం తెరవు కాలం" },
+  formOpenDate: { en: "Form Open Date", te: "ఫారం తెరవు తేదీ" },
+  formCloseDate: { en: "Form Close Date", te: "ఫారం మూసివేయు తేదీ" },
+  exportAll: { en: "Export All Data", te: "అన్ని డేటా ఎగుమతి" },
+  submissionStats: { en: "Submission Statistics", te: "సమర్పణ గణాంకాలు" },
+  totalFaculty: { en: "Total Faculty", te: "మొత్తం అధ్యాపకులు" },
+  acceptedCount: { en: "Accepted", te: "అంగీకరించబడింది" },
+  pendingCount: { en: "Pending Review", te: "సమీక్ష పెండింగ్" },
+  returnedCount: { en: "Returned for Correction", te: "సవరణ కోసం తిరిగి పంపబడింది" },
+  docVerified: { en: "Documents Verified", te: "పత్రాలు ధృవీకరించబడ్డాయి" },
+  docPending: { en: "Documents Pending", te: "పత్రాలు పెండింగ్" },
+
+  // ── Evidence upload ───────────────────────────────────────────────────────
+  evidenceLabel: { en: "Upload Supporting Document / Evidence", te: "సహాయక పత్రం / సాక్ష్యం అప్లోడ్ చేయండి" },
+  evidenceHelper: { en: "Upload PDF, JPG or PNG files as proof (e.g., certificate, paper copy)", te: "సాక్ష్యంగా PDF, JPG లేదా PNG ఫైళ్ళు అప్లోడ్ చేయండి (ఉదా., సర్టిఫికేట్, పేపర్ కాపీ)" },
+  viewEvidence: { en: "View Evidence", te: "సాక్ష్యం చూడు" },
+};
+
+export function t(key: string, lang: Lang): string {
+  return translations[key]?.[lang] ?? translations[key]?.["en"] ?? key;
+}
+
+export const departments = [
+  "Computer Science & Engineering",
+  "Mathematics",
+  "Physics",
+  "Chemistry",
+  "Botany",
+  "Zoology",
+  "History",
+  "Telugu",
+  "English",
+  "Economics",
+  "Political Science",
+  "Commerce",
+  "MBA",
+  "Pharmacy",
+  "Law",
+  "Education",
+  "Physical Education",
+  "Fine Arts",
+  "Library Science",
+];
+
+export const designations = [
+  "Professor",
+  "Associate Professor",
+  "Assistant Professor",
+  "Senior Assistant Professor",
+  "Guest Faculty",
+  "Contract Faculty",
+];
+
+export const qualifications = ["PhD", "M.Phil + PhD", "M.Phil", "PG", "UG"];
